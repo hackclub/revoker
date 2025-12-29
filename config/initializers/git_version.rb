@@ -1,4 +1,4 @@
-# Get the first 6 characters of the current git commit hash
+# Get the current git commit hash
 git_hash = ENV["SOURCE_COMMIT"] || `git rev-parse HEAD`.chomp rescue "unknown"
 
 commit_link = git_hash != "unknown" ? "https://github.com/hackclub/revoker/commit/#{git_hash}" : nil
@@ -16,7 +16,10 @@ version = is_dirty ? "#{short_hash}-dirty" : short_hash
 # Store server start time
 Rails.application.config.server_start_time = Time.current
 
-# Store the version
+# Store the version (short hash for display)
 Rails.application.config.git_version = version
 Rails.application.config.git_commit_count = commit_count
 Rails.application.config.commit_link = commit_link
+
+# Store full hash for Sentry release tracking (Sentry prefers full commit SHAs)
+Rails.application.config.git_full_hash = is_dirty ? "#{git_hash}-dirty" : git_hash
