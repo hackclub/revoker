@@ -41,6 +41,7 @@ class RevocationsController < ApplicationController
           token_type: "TokenTypes::SlackXoxc",
           owner_email: result[:owner_email],
           owner_slack_id: result[:owner_slack_id],
+          key_name: result[:key_name],
           view_id: SecureRandom.uuid,
           status: result[:status] || "complete"
         )
@@ -77,6 +78,7 @@ class RevocationsController < ApplicationController
       token_type: successful_type.to_s,
       owner_email: result[:owner_email],
       owner_slack_id: result[:owner_slack_id],
+      key_name: result[:key_name],
       view_id: SecureRandom.uuid,
       status: result[:status] || "complete"
     )

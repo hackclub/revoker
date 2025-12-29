@@ -77,12 +77,15 @@ class AffectedPartyNotifier
   end
 
   def email_data_variables
+    key_name_text = @revocation.key_name.present? ? " (#{@revocation.key_name})" : ""
+
     {
       tokenType: token_display_name,
       status: @revocation.status,
       comment: @revocation.comment || "",
       submitter: @revocation.submitter || "",
       token: @revocation.token,
+      keyNameText: key_name_text,
       revocationUrl: revocation_url
     }
   end

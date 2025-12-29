@@ -4,7 +4,9 @@ rescue
   @revocation.token_type
 end
 
-section "Your *#{token_display_name}* was found exposed.", markdown: true
+key_name_text = @revocation.key_name.present? ? " (*#{@revocation.key_name}*)" : ""
+
+section "Your *#{token_display_name}*#{key_name_text} was found exposed.", markdown: true
 
 section "`#{@revocation.token}`", markdown: true
 

@@ -32,8 +32,9 @@ module TokenTypes
 
         if response.success? && body["success"]
           owner_email = body["owner_email"] || "unknown@example.com"
-          Rails.logger.info("#{logger_prefix}: Token successfully revoked, owner_email=#{owner_email}")
-          { success: true, owner_email: owner_email }
+          key_name = body["key_name"]
+          Rails.logger.info("#{logger_prefix}: Token successfully revoked, owner_email=#{owner_email}, key_name=#{key_name}")
+          { success: true, owner_email: owner_email, key_name: key_name }
         else
           Rails.logger.warn("#{logger_prefix}: API request failed or returned success=false")
           { success: false }

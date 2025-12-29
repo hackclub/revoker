@@ -83,7 +83,7 @@ module TokenTypes
       end
 
       Rails.logger.info("SlackXoxb: Token successfully revoked")
-      { success: true, owner_email:, owner_slack_id:, owner_bot_name: }
+      { success: true, owner_email:, owner_slack_id:, key_name: owner_bot_name }
     rescue StandardError => e
       Rails.logger.error("SlackXoxb: Exception during revocation - #{e.class}: #{e.message}")
       Rails.logger.error(e.backtrace.join("\n"))

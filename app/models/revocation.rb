@@ -9,6 +9,7 @@ class Revocation < AirpplicationRecord
   field :comment, "comment"
   field :view_id, "view_id"
   field :status, "status"
+  field :key_name, "key_name"
 
   def notify_affected_party! = AffectedPartyNotifier.new(self).notify!
 
