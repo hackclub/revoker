@@ -12,9 +12,7 @@ class AffectedPartyNotifier
 
   private
 
-  def should_notify?
-    %w[revoked action_needed].include?(@revocation.status)
-  end
+  def should_notify? = true
 
   def notify_via_slack
     client = Slack::Web::Client.new(token: ENV["SLACK_BOT_TOKEN"])

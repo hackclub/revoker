@@ -1,6 +1,8 @@
 class Revocation < AirpplicationRecord
   self.table_name = "Revocations"
 
+  after_create :notify_affected_party!
+
   field :token, "token"
   field :token_type, "token_type"
   field :owner_email, "owner_email"
