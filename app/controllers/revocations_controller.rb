@@ -1,9 +1,9 @@
 class RevocationsController < ApplicationController
   before_action :set_revocation, only: [ :edit, :update ]
+  before_action :build_token_types, only: [ :new, :create ]
 
   def new
     @revocation = Revocation.new
-    @token_types = build_token_types_for_view
   end
 
   def create
@@ -15,7 +15,6 @@ class RevocationsController < ApplicationController
 
     if matched_types.empty?
       flash.now[:error] = "Token doesn't match any supported type."
-      @token_types = build_token_types_for_view
       return render :new, status: :unprocessable_entity
     end
 
@@ -39,7 +38,6 @@ class RevocationsController < ApplicationController
         return redirect_to edit_revocation_path(@revocation)
       else
         flash.now[:error] = "Failed to revoke xoxd+xoxc pair. The tokens may be invalid or already revoked."
-        @token_types = build_token_types_for_view
         return render :new, status: :unprocessable_entity
       end
     end
@@ -58,7 +56,6 @@ class RevocationsController < ApplicationController
 
     if successful_type.nil?
       flash.now[:error] = "This token seems to be invalid or already revoked."
-      @token_types = build_token_types_for_view
       return render :new, status: :unprocessable_entity
     end
 
@@ -100,8 +97,8 @@ class RevocationsController < ApplicationController
     @revocation = Revocation.find(params[:id])
   end
 
-  def build_token_types_for_view
-    TokenTypes::ALL.map do |token_type|
+  def build_token_types
+    @token_types = TokenTypes::ALL.map do |token_type|
       regex_source = token_type.regex.source
         .gsub('\\A', "^")
         .gsub('\\z', "$")
