@@ -14,6 +14,8 @@ class Revocation < AirpplicationRecord
     AffectedPartyNotifier.new(self).notify!
   end
 
+  def token_type_class = TokenTypes::ALL.find { |tt| tt.name == token_type }
+
   def lookup_slack_id_by_email
     return if owner_email.blank?
     return if owner_slack_id.present?

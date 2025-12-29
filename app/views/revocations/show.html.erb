@@ -4,7 +4,7 @@
 
     <% if @revocation.status == "action_needed" %>
       <p>
-        Your <strong><%= @revocation.token_type.constantize.display_name %></strong> was found exposed<% if @revocation.submitter.present? %> by <strong><%= @revocation.submitter %></strong><% end %>.
+        Your <strong><%= @revocation.token_type_class.display_name %></strong> was found exposed<% if @revocation.submitter.present? %> by <strong><%= @revocation.submitter %></strong><% end %>.
       </p>
 
       <div class="token-block">
@@ -16,7 +16,7 @@
       </p>
     <% else %>
       <p>
-        Your <strong><%= @revocation.token_type.constantize.display_name %></strong> was found exposed<% if @revocation.submitter.present? %> by <strong><%= @revocation.submitter %></strong><% end %> and has been revoked to protect your account.
+        Your <strong><%= @revocation.token_type_class.display_name %></strong> was found exposed<% if @revocation.submitter.present? %> by <strong><%= @revocation.submitter %></strong><% end %> and has been revoked to protect your account.
       </p>
 
       <div class="token-block">
