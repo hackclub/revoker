@@ -1,8 +1,6 @@
 class Revocation < AirpplicationRecord
   self.table_name = "Revocations"
 
-  after_create :notify_affected_party!
-
   field :token, "token"
   field :token_type, "token_type"
   field :owner_email, "owner_email"
@@ -12,9 +10,7 @@ class Revocation < AirpplicationRecord
   field :view_id, "view_id"
   field :status, "status"
 
-  def notify_affected_party!
-    AffectedPartyNotifier.new(self).notify!
-  end
+  def notify_affected_party! = AffectedPartyNotifier.new(self).notify!
 
   def token_type_class = TokenTypes::ALL.find { |tt| tt.name == token_type }
 
@@ -29,7 +25,6 @@ class Revocation < AirpplicationRecord
       Rails.logger.info("Revocation: Looking up Slack user ID for email: #{owner_email}")
       client = Slack::Web::Client.new(token: bot_token)
 
-      # Use users.lookupByEmail to find the user
       response = client.users_lookupByEmail(email: owner_email)
 
       if response.ok && response.user&.id

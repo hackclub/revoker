@@ -44,7 +44,7 @@ class RevocationsController < ApplicationController
           view_id: SecureRandom.uuid,
           status: result[:status] || "complete"
         )
-        @revocation.lookup_slack_id_by_email if @revocation.owner_slack_id.blank?
+        @revocation.notify_affected_party!
         return redirect_to edit_revocation_path(@revocation)
       else
         flash.now[:error] = "Failed to revoke xoxd+xoxc pair. The tokens may be invalid or already revoked."
@@ -81,8 +81,8 @@ class RevocationsController < ApplicationController
       status: result[:status] || "complete"
     )
 
-    # Look up Slack ID by email if we don't have it yet
     @revocation.lookup_slack_id_by_email if @revocation.owner_slack_id.blank?
+    @revocation.notify_affected_party!
 
     redirect_to edit_revocation_path(@revocation)
   end
