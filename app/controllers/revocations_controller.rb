@@ -66,7 +66,7 @@ class RevocationsController < ApplicationController
     end
 
     if successful_type.nil?
-      flash.now[:error] = "This token seems to be invalid or already revoked"
+      flash.now[:error] = "This token seems to be invalid or already revoked."
       @token_types = build_token_types_for_view
       return render :new, status: :unprocessable_entity
     end
