@@ -4,8 +4,7 @@ rescue
   @revocation.token_type
 end
 
-submitter_text = @revocation.submitter.present? ? " by *#{@revocation.submitter}*" : ""
-section "Your *#{token_display_name}* was found exposed#{submitter_text} and has been revoked to protect your account.", markdown: true
+section "Your *#{token_display_name}* was found exposed and has been revoked to protect your account.", markdown: true
 
 section "`#{@revocation.token}`", markdown: true
 

@@ -4,18 +4,10 @@ rescue
   @revocation.token_type
 end
 
-submitter_text = @revocation.submitter.present? ? " by *#{@revocation.submitter}*" : ""
-section "Your *#{token_display_name}* was found exposed#{submitter_text}.", markdown: true
+section "Your *#{token_display_name}* was found exposed.", markdown: true
 
 section "`#{@revocation.token}`", markdown: true
 
 section "*You need to revoke this token immediately to protect your account.* We weren't able to revoke it automatically, so you'll need to do it manually.", markdown: true
-
-if @revocation.comment.present?
-  divider
-  note_author = @revocation.submitter.present? ? "*#{@revocation.submitter}*" : "The submitter"
-  section "#{note_author} left this note:", markdown: true
-  context [mrkdwn_text("#{@revocation.comment}")]
-end
 
 actions [button("View details", "view_details", url: @revocation_url)]
