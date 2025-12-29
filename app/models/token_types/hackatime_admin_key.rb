@@ -3,6 +3,7 @@ module TokenTypes
     self.regex = /\Ahka_[0-9a-f]{64}\z/
     self.name = "Hackatime admin API key"
     self.hint = "hka_..."
+    self.service_owner_emails = %w[max@hackclub.com]
 
     def self.revoke(token, **kwargs)
       logger_prefix = "HackatimeAdminKey"
