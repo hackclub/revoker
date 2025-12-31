@@ -17,6 +17,8 @@ module TokenTypes
 
       body = response.body
       { success: true, owner_email: body["owner_email"], key_name: body["key_name"] }
+    rescue
+      { success: false }
     end
 
     def self.redact(token)
