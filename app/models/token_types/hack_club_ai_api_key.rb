@@ -15,7 +15,10 @@ module TokenTypes
         "Authorization" => "Bearer #{ENV["HCAI_REVOKER_KEY"]}"
       })
 
+      return { success: false } unless response.success?
+
       body = response.body
+
       { success: true, owner_email: body["owner_email"], key_name: body["key_name"] }
     rescue
       { success: false }
