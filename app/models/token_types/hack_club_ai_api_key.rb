@@ -1,7 +1,7 @@
 module TokenTypes
-  class HackClubAiApiKey < Base
+  class HackClubAiAPIKey < Base
     self.regex = /\Ask-hc-v1-[0-9a-f]{64}\z/
-    self.name = "Hack Club AI Key"
+    self.name = "Hack Club AI key"
     self.hint = "sk-hc-v1-..."
     self.service_owner_emails = %w[mahad@hackclub.com]
 
