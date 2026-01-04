@@ -1,12 +1,13 @@
 # the revoker
 
-https://revoke.hackclub.com
+<https://revoke.hackclub.com>
 
 revoke leaked tokens: paste one in, it gets detected and revoked automatically. the token owner gets notified via slack DM and email.
 
 ## supported tokens
 
 - airtable PATs
+- flavortown API keys
 - hack club AI API keys
 - hack club search API keys
 - hackatime admin keys
@@ -23,6 +24,7 @@ bin/dev
 ```
 
 create `.env.development`:
+
 ```env
 AIRTABLE_BASE_KEY=appXXX
 AIRTABLE_PAT=patXXX
