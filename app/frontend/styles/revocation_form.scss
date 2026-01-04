@@ -144,6 +144,31 @@
     }
   }
 
+  h2 {
+    color: #999;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 24px 0 12px 0;
+  }
+
+  ul {
+    margin: 0 0 16px 20px;
+    padding: 0;
+    list-style: disc;
+
+    li {
+      color: #999;
+      margin-bottom: 8px;
+
+      strong {
+        color: #ccc;
+        font-weight: 500;
+      }
+    }
+  }
+
   .token-block {
     margin: 20px 0;
     padding: 16px;
