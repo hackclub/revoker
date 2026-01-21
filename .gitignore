@@ -42,3 +42,5 @@ node_modules
 *.local
 docs/emails
 .idea
+
+vendor
