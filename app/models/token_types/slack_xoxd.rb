@@ -1,7 +1,7 @@
 module TokenTypes
   class SlackXoxd < Base
     self.regex = /\Axoxd-[a-zA-Z0-9+\/%=]+\z/
-    self.name = "scraped Slack dashboard token"
+    self.name = "scraped Slack client cookie"
     self.hint = "xoxd-..."
 
     def self.revoke(token, **kwargs)
