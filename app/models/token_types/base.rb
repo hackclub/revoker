@@ -12,11 +12,14 @@ module TokenTypes
     # Attempt to revoke the token. Returns a hash:
     #   { success: true, owner_email: "...", status: "complete" } on immediate success
     #   { success: true, owner_email: "...", status: "action_needed" } when manual intervention required
-    #   { success: false } on failure
+    #   { success: false } when token is invalid or already revoked
+    #   { success: false, error: "...", sentry_id: "..." } on internal error (exception caught)
     #
     # Optional return fields:
     #   - key_name: identifier for the specific key (e.g., bot name, key label like "msw@hackatime")
     #   - owner_slack_id: Slack user ID of the token owner
+    #   - error: human-readable error message when an exception occurred
+    #   - sentry_id: Sentry event ID for tracking internal errors
     #
     # Optional parameters for tokens that require companion tokens (e.g., Slack xoxc/xoxd pairs)
     # Status defaults to "complete" if not specified

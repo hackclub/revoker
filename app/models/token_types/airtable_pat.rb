@@ -53,8 +53,8 @@ module TokenTypes
       rescue StandardError => e
         Rails.logger.error("#{logger_prefix}: Exception during revocation - #{e.class}: #{e.message}")
         Rails.logger.error(e.backtrace.join("\n"))
-        Sentry.capture_exception(e)
-        { success: false }
+        sentry_id = Sentry.capture_exception(e)
+        { success: false, error: "Internal error during revocation", sentry_id: }
       end
     end
 

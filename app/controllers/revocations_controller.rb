@@ -21,7 +21,13 @@ class RevocationsController < ApplicationController
     # Special case: if token is xoxd and xoxc is provided, revoke using xoxc with xoxd as cookie
     if matched_types.any? { |t| t == TokenTypes::SlackXoxd } && xoxc.present?
       Rails.logger.info("RevocationsController: xoxd token with xoxc provided, using xoxc revocation flow")
-      result = TokenTypes::SlackXoxc.revoke(xoxc, xoxd: token)
+      begin
+        result = TokenTypes::SlackXoxc.revoke(xoxc, xoxd: token)
+      rescue => e
+        sentry_id = Sentry.capture_exception(e)
+        flash.now[:error] = "Something went wrong during revocation. Error ID: #{sentry_id}"
+        return render :new, status: :unprocessable_entity
+      end
 
       if result[:success]
         # Create revocation record with both tokens noted
@@ -36,6 +42,12 @@ class RevocationsController < ApplicationController
         )
         @revocation.notify_affected_party!
         return redirect_to edit_revocation_path(@revocation)
+      elsif result[:sentry_id]
+        flash.now[:error] = "Something went wrong during revocation. Error ID: #{result[:sentry_id]}"
+        return render :new, status: :unprocessable_entity
+      elsif result[:error]
+        flash.now[:error] = result[:error]
+        return render :new, status: :unprocessable_entity
       else
         flash.now[:error] = "Failed to revoke xoxd+xoxc pair. The tokens may be invalid or already revoked."
         return render :new, status: :unprocessable_entity
@@ -45,17 +57,31 @@ class RevocationsController < ApplicationController
     # Try revoking with each matched type until one succeeds
     result = nil
     successful_type = nil
+    last_error = nil
 
     matched_types.each do |token_type|
-      result = token_type.revoke(token, xoxd: xoxd, xoxc: xoxc)
-      if result[:success]
-        successful_type = token_type
-        break
+      begin
+        result = token_type.revoke(token, xoxd: xoxd, xoxc: xoxc)
+        if result[:success]
+          successful_type = token_type
+          break
+        elsif result[:error]
+          last_error = result
+        end
+      rescue => e
+        sentry_id = Sentry.capture_exception(e)
+        last_error = { error: "Internal error during revocation", sentry_id: sentry_id }
       end
     end
 
     if successful_type.nil?
-      flash.now[:error] = "This token seems to be invalid or already revoked."
+      if last_error&.dig(:sentry_id)
+        flash.now[:error] = "Something went wrong during revocation. Error ID: #{last_error[:sentry_id]}"
+      elsif last_error&.dig(:error)
+        flash.now[:error] = last_error[:error]
+      else
+        flash.now[:error] = "This token seems to be invalid or already revoked."
+      end
       return render :new, status: :unprocessable_entity
     end
 
