@@ -4,4 +4,5 @@ ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym "API"
   inflect.acronym "HCB"
   inflect.acronym "OAuth"
+  inflect.acronym "CDN"
 end

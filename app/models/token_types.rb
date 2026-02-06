@@ -6,6 +6,7 @@ module TokenTypes
     HackClubAiAPIKey,
     HackClubSearchAPIKey,
     HackatimeAdminKey,
+    HackClubCDNAPIKey,
     HCBOAuth,
     SlackXoxb,
     SlackXoxp,
@@ -31,6 +32,7 @@ require_relative "token_types/flavortown_api_key"
 require_relative "token_types/hack_club_ai_api_key"
 require_relative "token_types/hack_club_search_api_key"
 require_relative "token_types/hackatime_admin_key"
+require_relative "token_types/hack_club_cdn_api_key"
 require_relative "token_types/hcb_oauth"
 require_relative "token_types/slack_xoxb"
 require_relative "token_types/slack_xoxp"
