@@ -124,7 +124,7 @@ class RevocationsController < ApplicationController
   end
 
   def build_token_types
-    @token_types = TokenTypes::ALL.map do |token_type|
+    @token_types = TokenTypes::ALL.sort_by(&:display_name).map do |token_type|
       regex_source = token_type.regex.source
         .gsub('\\A', "^")
         .gsub('\\z', "$")
