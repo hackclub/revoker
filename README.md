@@ -11,6 +11,7 @@ revoke leaked tokens: paste one in, it gets detected and revoked automatically. 
 - hack club AI API keys
 - hack club search API keys
 - hackatime admin keys
+- hackatime api keys
 - HCB OAuth tokens
 - slack tokens (xoxb, xoxp, xoxc, xoxd)
 - theseus API keys
