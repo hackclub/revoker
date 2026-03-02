@@ -11,7 +11,7 @@ require_relative "token_types/slack_xoxp"
 require_relative "token_types/slack_xoxc"
 require_relative "token_types/slack_xoxd"
 require_relative "token_types/theseus_api_key"
-require_relative "token_types/hackatime_key"
+require_relative "token_types/hackatime_token"
 
 module TokenTypes
   # Registry of all token types
