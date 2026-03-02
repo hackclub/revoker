@@ -22,9 +22,9 @@ module TokenTypes
           faraday.response :json
         end
 
-        Rails.logger.info("#{logger_prefix}: Making POST request to #{hackatime_url}/api/internal/revoke_normal")
+        Rails.logger.info("#{logger_prefix}: Making POST request to #{hackatime_url}/api/internal/revoke")
 
-        response = connection.post("/api/internal/revoke_normal", {}, {
+        response = connection.post("/api/internal/revoke", {}, {
           "Authorization" => "Bearer #{auth_token}"
         }) do |req|
           req.params["token"] = token
