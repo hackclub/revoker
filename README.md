@@ -1,6 +1,6 @@
 # the revoker
 
-<https://revoke.hackclub.com>
+ API token amnesty box - <https://revoke.hackclub.com>
 
 revoke leaked tokens: paste one in, it gets detected and revoked automatically. the token owner gets notified via slack DM and email.
 
