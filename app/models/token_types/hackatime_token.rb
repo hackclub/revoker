@@ -34,14 +34,10 @@ module TokenTypes
         Rails.logger.info("#{logger_prefix}: Response status=#{response.status}, body=#{body.inspect}")
 
         if response.success? && body["success"]
-          owner_email = body["owner_email"]
+          owner_email = body["owner_email"] || "unknown@example.com"
           key_name = body["key_name"]
-          status = body["status"]
-          Rails.logger.info("#{logger_prefix}: Token revoked, owner_email=#{owner_email}, key_name=#{key_name}, status=#{status}")
-          result = { success: true, owner_email: owner_email }
-          result[:key_name] = key_name if key_name
-          result[:status] = status.to_sym if status
-          result
+          Rails.logger.info("#{logger_prefix}: Token successfully revoked, owner_email=#{owner_email}, key_name=#{key_name}")
+          { success: true, owner_email:, key_name: }
         else
           Rails.logger.warn("#{logger_prefix}: API request failed or returned success=false")
           { success: false }
