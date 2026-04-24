@@ -128,7 +128,7 @@ GEM
       railties (>= 6.1)
     drb (2.2.3)
     dry-cli (1.4.1)
-    erb (6.0.1)
+    erb (6.0.1.1)
     erubi (1.13.1)
     faraday (2.14.0)
       faraday-net_http (>= 2.0, < 3.5)
@@ -467,7 +467,7 @@ CHECKSUMS
   dotenv-rails (3.2.0) sha256=657e25554ba622ffc95d8c4f1670286510f47f2edda9f68293c3f661b303beab
   drb (2.2.3) sha256=0b00d6fdb50995fe4a45dea13663493c841112e4068656854646f418fda13373
   dry-cli (1.4.1) sha256=b8015bb76c708aa8705a36faf694973e75eeeffca39b89c8e172dc6f66a7d874
-  erb (6.0.1) sha256=28ecdd99c5472aebd5674d6061e3c6b0a45c049578b071e5a52c2a7f13c197e5
+  erb (6.0.1.1) sha256=ce5357460652a9a94667c5769eaffc551eea2b14a8531ac7c7b1d77b860758b9
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
   faraday (2.14.0) sha256=8699cfe5d97e55268f2596f9a9d5a43736808a943714e3d9a53e6110593941cd
   faraday-mashify (1.0.2) sha256=ebdc93b3f807af9a4b18c3d967fc7bcda01e297aed9cc2015ffe8db6e7add2e9
