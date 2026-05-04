@@ -184,7 +184,7 @@ GEM
       uri (>= 0.11.1)
     net-http-persistent (4.0.8)
       connection_pool (>= 2.2.4, < 4)
-    net-imap (0.6.2)
+    net-imap (0.6.4)
       date
       net-protocol
     net-pop (0.1.2)
@@ -359,7 +359,7 @@ GEM
     thruster (0.1.17-arm64-darwin)
     thruster (0.1.17-x86_64-darwin)
     thruster (0.1.17-x86_64-linux)
-    timeout (0.6.0)
+    timeout (0.6.1)
     tsort (0.2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -497,7 +497,7 @@ CHECKSUMS
   mutex_m (0.3.0) sha256=cfcb04ac16b69c4813777022fdceda24e9f798e48092a2b817eb4c0a782b0751
   net-http (0.9.1) sha256=25ba0b67c63e89df626ed8fac771d0ad24ad151a858af2cc8e6a716ca4336996
   net-http-persistent (4.0.8) sha256=ef3de8319d691537b329053fae3a33195f8b070bbbfae8bf1a58c796081960e6
-  net-imap (0.6.2) sha256=08caacad486853c61676cca0c0c47df93db02abc4a8239a8b67eb0981428acc6
+  net-imap (0.6.4) sha256=9a5598c67a3022c284d98430ef1d4948e7dbdb62596f61081ea8ca933270a02b
   net-pop (0.1.2) sha256=848b4e982013c15b2f0382792268763b748cce91c9e91e36b0f27ed26420dff3
   net-protocol (0.2.2) sha256=aa73e0cba6a125369de9837b8d8ef82a61849360eba0521900e2c3713aa162a8
   net-smtp (0.5.1) sha256=ed96a0af63c524fceb4b29b0d352195c30d82dd916a42f03c62a3a70e5b70736
@@ -563,7 +563,7 @@ CHECKSUMS
   thruster (0.1.17-arm64-darwin) sha256=75da66fc4a0f012f9a317f6362f786a3fa953879a3fa6bed8deeaebf1c1d66ec
   thruster (0.1.17-x86_64-darwin) sha256=b49e4c52563d1476d3aa1e12f7f57febb4510ac163f6abeac7c7c0de8a54437f
   thruster (0.1.17-x86_64-linux) sha256=77b8f335075bd4ece7631dc84a19a710a1e6e7102cbce147b165b45851bdfcd3
-  timeout (0.6.0) sha256=6d722ad619f96ee383a0c557ec6eb8c4ecb08af3af62098a0be5057bf00de1af
+  timeout (0.6.1) sha256=78f57368a7e7bbadec56971f78a3f5ecbcfb59b7fcbb0a3ed6ddc08a5094accb
   tsort (0.2.0) sha256=9650a793f6859a43b6641671278f79cfead60ac714148aabe4e3f0060480089f
   tzinfo (2.0.6) sha256=8daf828cc77bcf7d63b0e3bdb6caa47e2272dcfaf4fbfe46f8c3a9df087a829b
   unicode-display_width (3.2.0) sha256=0cdd96b5681a5949cdbc2c55e7b420facae74c4aaf9a9815eee1087cb1853c42
