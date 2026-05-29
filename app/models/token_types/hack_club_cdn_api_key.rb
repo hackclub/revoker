@@ -3,6 +3,7 @@ module TokenTypes
     self.regex = /\Ask_cdn_[a-f0-9]{64}\z/
     self.name = "Hack Club CDN API key"
     self.hint = "sk_cdn_..."
+    self.service_owner_emails = %w[nora@hackclub.com]
 
     def self.revoke(token, **kwargs)
       Rails.logger.info("HackClubCDNAPIKey: Starting revocation for token")
