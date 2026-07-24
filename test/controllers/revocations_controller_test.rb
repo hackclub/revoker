@@ -2,7 +2,7 @@ require "test_helper"
 
 class RevocationsControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get revocations_new_url
+    get new_revocation_url
     assert_response :success
   end
 end
