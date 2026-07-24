@@ -8,22 +8,15 @@ module TokenTypes
 
     def self.revoke(token, **_kwargs)
       base_url = ENV["ATTEND_API_URL"] || "https://attend.hackclub.com"
-      auth_token = ENV["ATTEND_AUTH_TOKEN"]
-
-      unless auth_token
-        Rails.logger.error("AttendAPIKey: ATTEND_AUTH_TOKEN not configured")
-        Sentry.capture_message("ATTEND_AUTH_TOKEN not configured", level: :error)
-        return { success: false }
-      end
 
       connection = Faraday.new(url: base_url) do |faraday|
         faraday.request :json
         faraday.response :json
       end
 
-      response = connection.post("/api/v1/tokens/revoke", { token: }, {
-        "Authorization" => "Bearer #{auth_token}"
-      })
+      # No credentials needed: the token being revoked is itself the proof of
+      # authorization on Attend's side.
+      response = connection.post("/api/v1/tokens/revoke", { token: })
 
       return { success: false } unless response.success?
 
