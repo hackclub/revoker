@@ -14,7 +14,8 @@ module TokenTypes
     SlackXoxd,
     TheseusAPIKey,
     TheseusPublicAPIKey,
-    HackatimeToken
+    HackatimeToken,
+    AttendApiKey
   ].freeze
 
   def self.find(value)
@@ -43,3 +44,4 @@ require_relative "token_types/slack_xoxc"
 require_relative "token_types/slack_xoxd"
 require_relative "token_types/theseus_api_key"
 require_relative "token_types/hackatime_token"
+require_relative "token_types/attend_api_key"

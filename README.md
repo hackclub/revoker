@@ -7,6 +7,7 @@ revoke leaked tokens: paste one in, it gets detected and revoked automatically. 
 ## supported tokens
 
 - airtable PATs
+- attend.hackclub.com API keys
 - flavortown API keys
 - hack club AI API keys
 - hack club search API keys
