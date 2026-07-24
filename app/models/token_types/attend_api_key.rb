@@ -1,5 +1,5 @@
 module TokenTypes
-  class AttendApiKey < Base
+  class AttendAPIKey < Base
     # attend.hackclub.com tokens: "attn_" + urlsafe_base64 (named tokens) or
     # + hex (legacy per-event keys). Both are covered by [A-Za-z0-9_-].
     self.regex = /\Aattn_[A-Za-z0-9_-]{20,}\z/
@@ -11,7 +11,7 @@ module TokenTypes
       auth_token = ENV["ATTEND_AUTH_TOKEN"]
 
       unless auth_token
-        Rails.logger.error("AttendApiKey: ATTEND_AUTH_TOKEN not configured")
+        Rails.logger.error("AttendAPIKey: ATTEND_AUTH_TOKEN not configured")
         Sentry.capture_message("ATTEND_AUTH_TOKEN not configured", level: :error)
         return { success: false }
       end
@@ -32,7 +32,7 @@ module TokenTypes
 
       { success: true, owner_email: body["owner_email"], key_name: body["key_name"] }
     rescue StandardError => e
-      Rails.logger.error("AttendApiKey: #{e.class}: #{e.message}")
+      Rails.logger.error("AttendAPIKey: #{e.class}: #{e.message}")
       Sentry.capture_exception(e)
       { success: false }
     end

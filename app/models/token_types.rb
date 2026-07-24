@@ -15,7 +15,7 @@ module TokenTypes
     TheseusAPIKey,
     TheseusPublicAPIKey,
     HackatimeToken,
-    AttendApiKey
+    AttendAPIKey
   ].freeze
 
   def self.find(value)
