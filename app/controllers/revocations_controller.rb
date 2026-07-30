@@ -37,6 +37,7 @@ class RevocationsController < ApplicationController
           owner_email: result[:owner_email],
           owner_slack_id: result[:owner_slack_id],
           key_name: result[:key_name],
+          extra_info: result[:extra_info],
           view_id: SecureRandom.uuid,
           status: result[:status] || "complete"
         )
@@ -92,6 +93,7 @@ class RevocationsController < ApplicationController
       owner_email: result[:owner_email],
       owner_slack_id: result[:owner_slack_id],
       key_name: result[:key_name],
+      extra_info: result[:extra_info],
       view_id: SecureRandom.uuid,
       status: result[:status] || "complete"
     )

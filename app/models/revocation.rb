@@ -11,6 +11,7 @@ class Revocation < AirpplicationRecord
   field :status, "status"
   field :key_name, "key_name"
   field :from_api, "from_api", type: :boolean
+  field :extra_info, "extra_info"
 
   def notify_affected_party! = AffectedPartyNotifier.new(self).notify!
 

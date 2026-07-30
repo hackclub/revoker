@@ -46,6 +46,12 @@
         <th><%= @revocation.status == "action_needed" ? "Submitted" : "Revoked" %> at</th>
         <td><%= @revocation.created_at.strftime("%b %-d, %Y at %H:%M UTC") %></td>
       </tr>
+      <% if @revocation.extra_info.present? %>
+        <tr>
+          <th>Info</th>
+          <td><%= simple_format @revocation.extra_info %></td>
+        </tr>
+      <% end %>
       <% if @revocation.from_api? %>
         <tr>
           <th>Source</th>
