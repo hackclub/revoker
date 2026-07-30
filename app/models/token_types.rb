@@ -2,6 +2,7 @@ module TokenTypes
   # Registry of all token types
   ALL = [
     AirtablePAT,
+    GitHubToken,
     HackClubCDNAPIKey,
     FlavortownAPIKey,
     HackClubAiAPIKey,
@@ -32,6 +33,7 @@ end
 
 require_relative "token_types/base"
 require_relative "token_types/airtable_pat"
+require_relative "token_types/github_token"
 require_relative "token_types/hack_club_cdn_api_key"
 require_relative "token_types/flavortown_api_key"
 require_relative "token_types/hack_club_ai_api_key"
