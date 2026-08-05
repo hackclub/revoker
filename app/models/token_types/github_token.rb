@@ -112,7 +112,6 @@ module TokenTypes
           { extra_info: extra_parts.join("\n").presence }
         end
       end
-      end
 
       def revoke_installation_token(connection, token, owner_info)
         response = connection.delete("/installation/token") do |req|
